@@ -100,7 +100,25 @@
 					<wtpapplicationxml>true</wtpapplicationxml>
 					<wtpversion>2.0</wtpversion>
 				</configuration>
-			</plugin>			
+			</plugin>	
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<webApp>
+						<contextPath>/export</contextPath>
+					</webApp>
+					<!-- use war with command mvn jetty:run-exploded -->
+					<war>${basedir}/target/highcharts-cloud-editor-web</war>
+					<reload>manual</reload>
+					<systemProperties>
+						<systemProperty>
+							<name>log4j.configuration</name>
+							<value>file:./src/main/resources/log4j.properties</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>		
 		</plugins>
 	</build>
 </project>

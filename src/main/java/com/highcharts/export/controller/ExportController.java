@@ -26,7 +26,7 @@ import com.highcharts.export.util.MimeType;
 import com.highcharts.export.util.SVGRasterizer;
 import com.highcharts.export.util.SVGRasterizerException;
 
-@WebServlet(name = "Highcharts-Chart-Export", urlPatterns = { "/*" })
+@WebServlet(name = "Highcharts-Chart-Export", urlPatterns = { "/genpngServlet" })
 @MultipartConfig
 public class ExportController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -118,7 +118,7 @@ public class ExportController extends HttpServlet {
 			stream.write(svg.getBytes());
 		}
 		
-		File f = new File(context.getRealPath("/") + "/export/"  + filename);
+		File f = new File(context.getRealPath("/") + "/export/"  + filename+".png");
 		if(!f.getParentFile().isDirectory()){
 			f.getParentFile().mkdirs();
 		}

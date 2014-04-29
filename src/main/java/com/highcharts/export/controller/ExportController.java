@@ -118,7 +118,10 @@ public class ExportController extends HttpServlet {
 			stream.write(svg.getBytes());
 		}
 		
-		File f = new File(context.getRealPath("/") + filename);
+		File f = new File(context.getRealPath("/") + "/export/"  + filename);
+		if(!f.getParentFile().isDirectory()){
+			f.getParentFile().mkdirs();
+		}
 		if(!f.isFile()){
 			f.createNewFile();
 		}
